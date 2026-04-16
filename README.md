@@ -87,6 +87,85 @@ User Action → API Layer → Service Layer → Database
 * Ensured **clean and maintainable code structure**
 
 ---
+##  How to Run the Project
+
+Follow these steps to set up and run the application locally:
+
+### 1. Clone the Repository
+
+git clone https://github.com/<your-username>/scalable-twitter-clone.git
+
+### 2. Navigate to Project Folder
+
+cd scalable-twitter-clone
+
+### 3. Install Dependencies
+
+npm install
+
+### 4. Start the Server
+
+node server.js
+
+The server will start at:
+http://localhost:5000
+
+---
+
+## 🧪 Testing the API
+
+You can use Postman or any API client.
+
+### Create User
+
+POST /user
+
+Body:
+{
+"name": "Alice"
+}
+
+---
+
+### Create Tweet
+
+POST /tweet
+
+Body:
+{
+"userId": "<user_id>",
+"content": "Hello world"
+}
+
+---
+
+### Follow User
+
+POST /follow
+
+Body:
+{
+"userId": "<user_id>",
+"followId": "<another_user_id>"
+}
+
+---
+
+### Get Feed
+
+GET /feed/<user_id>
+
+---
+
+### Like Tweet
+
+POST /like/<tweet_id>
+
+---
+
+### Get Tweets (Pagination)
+
+GET /tweets?page=1&limit=5
 
 ## Future Enhancements
 
