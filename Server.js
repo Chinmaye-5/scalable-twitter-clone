@@ -8,9 +8,13 @@ app.use(express.json());
 
 let tweets = [];
 
-// 🔹 Create Tweet
+// Create Tweet
 app.post("/tweet", (req, res) => {
   const { content } = req.body;
+
+  if (!content) {
+    return res.status(400).json({ message: "Content is required" });
+  }
 
   const newTweet = {
     id: uuidv4(),
@@ -23,12 +27,12 @@ app.post("/tweet", (req, res) => {
   res.json(newTweet);
 });
 
-// 🔹 Get All Tweets
+// Get All Tweets
 app.get("/tweets", (req, res) => {
   res.json(tweets);
 });
 
-// 🔹 Like Tweet
+// Like Tweet
 app.post("/like/:id", (req, res) => {
   const tweet = tweets.find(t => t.id === req.params.id);
 
@@ -40,15 +44,15 @@ app.post("/like/:id", (req, res) => {
   res.json(tweet);
 });
 
-// 🔹 Simple AI Sentiment Tag (your custom feature)
+// AI Sentiment Feature
 app.post("/analyze", (req, res) => {
   const { content } = req.body;
 
   let sentiment = "neutral";
 
-  if (content.includes("happy") || content.includes("good")) {
+  if (content.toLowerCase().includes("happy") || content.toLowerCase().includes("good")) {
     sentiment = "positive";
-  } else if (content.includes("sad") || content.includes("bad")) {
+  } else if (content.toLowerCase().includes("sad") || content.toLowerCase().includes("bad")) {
     sentiment = "negative";
   }
 
@@ -56,5 +60,5 @@ app.post("/analyze", (req, res) => {
 });
 
 app.listen(5000, () => {
-  console.log("Server running on port 5000");
+  console.log(" Server running on http://localhost:5000");
 });
