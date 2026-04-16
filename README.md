@@ -70,6 +70,7 @@ The system demonstrates trade-offs between scalability and performance.
 
 ---
 
+
 ## Data Flow
 
 User Action → API Layer → Service Layer → Database
